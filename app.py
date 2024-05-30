@@ -60,9 +60,9 @@ def redirect_to_long_url(url_corta):
     else:
         return jsonify({'error': 'URL corta no encontrada'}), 404
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
 @app.route('/')
 def home():
     return "Bienvenido a mi aplicación Flask!"
+
+if __name__ == '__main__':
+    app.run(debug=True)
