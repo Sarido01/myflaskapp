@@ -62,3 +62,7 @@ def redirect_to_long_url(url_corta):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/')
+def home():
+    return "Bienvenido a mi aplicación Flask!"
