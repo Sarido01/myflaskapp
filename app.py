@@ -48,6 +48,9 @@ def obtener_url_larga(url_corta):
 @app.route('/shorten', methods=['POST'])
 def shorten_url():
     data = request.get_json()
+    if not data or 'url' not in data:
+        return jsonify({'error': 'URL no proporcionada'}), 400
+    
     url_larga = data['url']
     url_corta = acortar_url(url_larga)
     return jsonify({'short_url': request.host_url + url_corta})
