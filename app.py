@@ -2,11 +2,15 @@ from flask import Flask, request, redirect, jsonify
 import sqlite3
 import hashlib
 import base64
+import os
 
 app = Flask(__name__)
 
+# Definir la ruta de la base de datos en el directorio temporal
+db_path = '/tmp/url_shortener.db'
+
 # Conexión a la base de datos SQLite
-conn = sqlite3.connect('url_shortener.db', check_same_thread=False)
+conn = sqlite3.connect(db_path, check_same_thread=False)
 cursor = conn.cursor()
 
 # Crear tabla para almacenar URLs si no existe
@@ -69,3 +73,4 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
